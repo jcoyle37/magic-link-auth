@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Login</title>
+		<meta name="Description" content="Put your description here.">
+	</head>
+
+	<body>
+		<h1>Login:</h1>
+        <form action="/api/accounts/login" method="post">
+            <input name="email" placeholder="E-mail address here" required /><br/>
+            <input type="submit" value="Login">
+		</form>
+		<hr/>
+		<h1>Register</h1>
+		<form action="/api/accounts/register" method="post">
+			<input type="email" name="email" placeholder="E-mail address here" required /><br/>
+			<input
+				type="text" name="name" pattern="^[\w ]+$"
+				title="May only contain letters, numbers, underscores or spaces"
+				placeholder="Name address here" required /><br/>
+            <input type="submit" value="Register">
+		</form>
+  	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Dashboard</title>
+		<meta name="Description" content="Put your description here.">
+	</head>
+
+	<body>
+        <h1>Go ahead, <span id="name"></span></h1>
+        <h2>Put those feet up on the dash</h2>
+
+        <a href="/api/accounts/logout">Logout</a>
+  	</body>
+</html>
+
+<script>
+var xhttpInit = new XMLHttpRequest();
+xhttpInit.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var jsonResponse = JSON.parse(this.responseText);
+        if(jsonResponse.auth) {
+            document.getElementById('name').innerHTML = jsonResponse[0].name;
+        }
+    }
+};
+xhttpInit.open('GET', 'api/accounts/me', true);
+xhttpInit.send();
+</script>
