@@ -9,3 +9,5 @@
 
 # misc
 sqlite.db
+.DS_Store
+thumbs.db
