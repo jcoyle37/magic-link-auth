@@ -4,7 +4,7 @@ const config = require('../config');
 var smtpConfig = {
   host: config.mail.url,
   port: config.mail.port,
-  secure: true, // use SSL
+  secure: config.mail.useSSL,
   auth: {
     user: config.mail.user,
     pass: config.mail.password
