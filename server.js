@@ -14,9 +14,10 @@ const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
 const verifyToken = require('./middleware/verifyToken');
-app.use(require('./middleware/authentication').authenticated);
 
-app.get('/api/accounts/init', require('./controller/accounts-init'));
+app.get('/api/accounts/init',
+  require('./middleware/authentication').authenticated,
+  require('./controller/accounts-init'));
 app.get('/api/accounts/me', verifyToken, require('./controller/accounts-me'));
 app.post('/api/accounts/login', require('./controller/accounts-login'));
 app.post('/api/accounts/register', require('./controller/accounts-register'));
