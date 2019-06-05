@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
   const body = schema.validate(req.body);
   if (body.error) return next(body.error);
 
-  return AccountModel
+ return AccountModel
     .find({
       where: body.value,
       limit: 1,
@@ -21,7 +21,7 @@ module.exports = (req, res, next) => {
       if(list.length) {
         return list;
       }
-      res.json({ message: 'user not found'});
+      else throw { message: 'user not found' };
     })
     .then((list) => AuthService.generateInit(list[0]))
     .then((token) => MailService.create({

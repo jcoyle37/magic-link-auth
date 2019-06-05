@@ -13,13 +13,10 @@ module.exports = (req, res) => {
       res.cookie('Authorization', primaryToken, cookieSettings);
       res.redirect('/');
     }).catch((error) => {
-      if(error.responseText) alert(error.responseText);
-      else alert(error);
+      throw { 'message': error };
     });
   }
-  return res
-    .status(401)
-    .send({ message: 'not authenticated' });
+  throw { message: 'not authenticated' };
 };
 
 
