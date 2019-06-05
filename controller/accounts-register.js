@@ -17,15 +17,19 @@ module.exports = (req, res, next) => {
         email: body.value.email,
         name: body.value.name
     })
-    .then(function() {
-      request({
-        url: config.host + '/api/accounts/login',
-        method: 'POST',
-        json: true,
-        body: {
-          email: body.value.email
-        }
-      }).pipe(res);
+    .then((dtbsRes) => {
+      if(dtbsRes.error) {
+        throw {'message': dtbsRes.message};
+      } else {
+        request({
+          url: config.host + '/api/accounts/login',
+          method: 'POST',
+          json: true,
+          body: {
+            email: body.value.email
+          }
+        }).pipe(res);
+      }
     })
     .catch(next);
 }
