@@ -7,8 +7,8 @@ module.exports = (req, res, next) => {
       limit: 1,
     })
     .then((list) => {
-      if(list.length) res.send({auth: true, userData: list[0]});
-      else res.send({ status: 'user not found'});
+      if(list.length) res.json({auth: true, userData: list[0]});
+      else throw { message: 'user not found'};
     })
     .catch(next);
 }
