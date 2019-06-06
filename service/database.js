@@ -7,13 +7,12 @@ const fs = require('fs');
 const dbFile = './sqlite.db';
 const exists = fs.existsSync(dbFile);
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database(dbFile);
+const db = new sqlite3.Database(dbFile); //if ../sqlite.db does not exist, create it
 
 db.serialize(function() {
-  //if ../sqlite.db does not exist, create it
   if (!exists) {
     db.serialize(function() {
-      db.run('CREATE TABLE User (email TEXT, name TEXT);', function(res) {
+      db.run('CREATE TABLE User (email TEXT, name TEXT);', function() {
         console.log('Created table User');
       });
       //db.run('INSERT INTO User (email, name) VALUES ("email@email.com", "Joe Cool")'); // insert default user
