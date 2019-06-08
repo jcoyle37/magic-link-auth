@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 const config = require('../config');
 const AccountModel = require('../model/account');
 const AuthService = require('../service/authentication');
