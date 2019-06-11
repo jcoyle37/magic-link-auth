@@ -23,8 +23,6 @@ app.post('/api/accounts/login', require('./controller/accounts-login'));
 app.post('/api/accounts/register', require('./controller/accounts-register'));
 app.get('/api/accounts/logout', verifyToken, require('./controller/accounts-logout'));
 
-app.use(express.static(path.join(__dirname, 'build')));
-
 app.get('*', (req, res) => {
   if(req.cookies['Authorization']) {
     res.sendFile(path.join(__dirname+'/public/dashboard.html'));
