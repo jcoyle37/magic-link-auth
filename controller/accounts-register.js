@@ -22,7 +22,7 @@ module.exports = (req, res, next) => {
         throw {'message': dtbsRes.message};
       } else {
         request({
-          url: config.host + '/api/accounts/login',
+          url: 'http://localhost:' + config.port + '/api/accounts/login',
           method: 'POST',
           json: true,
           body: {
